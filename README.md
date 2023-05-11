@@ -118,16 +118,27 @@ npm install lodash
 npm install --save-dev @types/lodash
 
 
-# index.ts 文件使用 lodash
+# index.ts 文件使用 lodash 及 test.ts
 import _ from 'lodash'
+import { add } from './test'
 
 let res = _.padStart('Hello TypeScript!', 20, 'a')
-
 let arr: number[] = [1, 2]
+let resArr = arr.map(item => item = item+1)
 
-arr.map(item => item+1)
-console.log(res)
-console.log(arr)
+console.log(res) // aaaHello TypeScript!
+console.log(arr, resArr) // [ 1, 2 ] [ 2, 3 ]
+console.log('add', add(2, 3)) // add 5
+
+
+
+
+# test.ts 文件
+
+export function add(x: number, y: number): number{
+  return x + y
+}
+console.log(add(1, 2)) // 3
 
 
 # 如果想运行 index.ts 文件的输出结果，可以先打包编译，然后使用 node 运行编译后的文件
